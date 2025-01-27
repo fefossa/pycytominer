@@ -273,7 +273,7 @@ class SingleCells:
             image_table_name = self.image_table_name
 
         image_query = f"select * from {image_table_name}"
-        self.image_df = pd.read_sql(sql=image_query, con=self.conn)
+        self.image_df = pd.read_sql(sql=image_query, con=self.conn.connection)
 
         if self.add_image_features:
             self.image_features_df = extract_image_features(
