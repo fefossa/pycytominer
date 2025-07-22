@@ -1,5 +1,6 @@
 from collections import Counter
-from pycytominer.cyto_utils import get_default_compartments
+
+from pycytominer.cyto_utils.util import get_default_compartments
 
 
 def get_default_linking_cols():
@@ -71,7 +72,9 @@ def assert_linking_cols_complete(linking_cols="default", compartments="default")
     diff_column = set(compartments).difference(unique_linking_cols)
     assert (  # noqa: S101
         unique_linking_cols == sorted(compartments)
-    ), f"All compartments must be specified in the linking_cols, {diff_column} is missing"
+    ), (
+        f"All compartments must be specified in the linking_cols, {diff_column} is missing"
+    )
 
 
 def provide_linking_cols_feature_name_update(linking_cols="default"):
