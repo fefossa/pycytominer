@@ -299,7 +299,10 @@ class SingleCells:
             )
 
         image_features = list(np.union1d(self.image_cols, self.strata))
-        self.image_df = self.image_df[image_features]
+        if self.add_image_features:
+            self.image_df = self.image_features_df
+        else:
+            self.image_df = self.image_df[image_features]
 
         if self.fields_of_view != "all":
             check_fields_of_view(
